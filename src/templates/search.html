@@ -20,6 +20,9 @@
         <p>
             {{ i['description'] }}
         </p>
+        {% if i['date']%}
+            <p>{{ i['date'] }}</p>
+        {% endif %}
         <hr>
         {%endfor%}
     <center>

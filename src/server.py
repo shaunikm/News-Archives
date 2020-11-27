@@ -100,12 +100,16 @@ def main():
     return({'message': 'ready', 'parameters': args, 'status': 200})
 
 @app.route('/', methods=['GET'])
-def x():
+def homepage():
     return(demo.index())
 
 @app.route('/day/<target>', methods=['GET'])
-def y(target):
+def server_day_search(target):
     return(demo.day_search(target))
+
+@app.route('/keyword/<target>', methods=['GET'])
+def server_keyword_search(target):
+    return(demo.keyword_search(target))
 
 @app.errorhandler(500)
 def server_error(err):
@@ -114,5 +118,3 @@ def server_error(err):
 @app.errorhandler(404)
 def not_found(err):
     return({'message': 'URL not found', 'status': 404})
-
-app.run(debug=True)
